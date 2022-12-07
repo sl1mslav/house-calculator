@@ -240,6 +240,15 @@ object ComposeApp {
                         bearingWalls.draw()
                         facadeCladding.draw()
                         roofing.draw()
+
+                        listOf(
+                            houseFoundation,
+                            bearingWalls,
+                            facadeCladding,
+                            roofing
+                        ).forEach {
+                            it.draw()
+                        }
                     }
                 }
             }
