@@ -7,6 +7,10 @@ plugins {
     id("org.jetbrains.compose")
 }
 
+dependencies {
+    commonMainImplementation(compose.desktop.currentOs)
+}
+
 group = "com.example"
 version = "1.0-SNAPSHOT"
 
@@ -43,3 +47,4 @@ compose.desktop {
         }
     }
 }
+
