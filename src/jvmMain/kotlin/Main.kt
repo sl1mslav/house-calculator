@@ -19,7 +19,7 @@ fun App() {
 /**
  * Главная функция приложения.
  */
-fun main() = application {
+fun main(args: Array<String>) = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = Strings.APP_NAME
