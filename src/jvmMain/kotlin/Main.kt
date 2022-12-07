@@ -22,8 +22,8 @@ fun App() {
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = Strings.APP_NAME,
-        icon = painterResource("logo.svg")
+        title = Strings.APP_NAME
+        //icon = painterResource("logo.svg") todo: сделать иконку
     ) {
         App()
     }
