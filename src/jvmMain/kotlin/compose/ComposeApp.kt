@@ -18,8 +18,6 @@ import helpers.ProjectColors
 import helpers.Strings.HEADER_TEXT
 import models.*
 import java.math.BigDecimal
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 
 object ComposeApp {
 
@@ -73,7 +71,7 @@ object ComposeApp {
                         cost = if (toCalculate.all { it != null }) {
                             val result = (foundationHeight!! * surfaceValue!! * materialInputs[0]!! +
                                     volumeValue!! * (materialInputs[1]!! + materialInputs[2]!!) + surfaceValue!! * materialInputs[3]!!)
-                            BigDecimal(result.toDouble()).toCoherentNumber()
+                            BigDecimal(result.toDouble()).toPlainString().replace(".", ",")
                         } else null
                     }
 
@@ -120,7 +118,7 @@ object ComposeApp {
 
                         val lengthField = CustomTextField(
                             label = "Длина (м)",
-                            onTextChange = {
+                            onValueChange = {
                                 sizeInputs[1] = it.replace(",", ".").toFloatOrNull()
                                 perimeterValue = calcPerimeter(sizeInputs[1], sizeInputs[2])
                                 calculateCost()
@@ -129,7 +127,7 @@ object ComposeApp {
 
                         val widthField = CustomTextField(
                             label = "Ширина (м)",
-                            onTextChange = {
+                            onValueChange = {
                                 sizeInputs[2] = it.replace(",", ".").toFloatOrNull()
                                 perimeterValue = calcPerimeter(sizeInputs[1], sizeInputs[2])
                                 calculateCost()
@@ -138,7 +136,7 @@ object ComposeApp {
 
                         val heightField = CustomTextField(
                             label = "Высота этажа (м)",
-                            onTextChange = {
+                            onValueChange = {
                                 sizeInputs[3] = it.replace(",", ".").toFloatOrNull()
                                 volumeValue = calcWallsVolume()
                                 calculateCost()
@@ -147,7 +145,7 @@ object ComposeApp {
 
                         val wallThicknessField = CustomTextField(
                             label = "Толщина стены (см)",
-                            onTextChange = {
+                            onValueChange = {
                                 sizeInputs[4] = it.replace(",", ".").toFloatOrNull()
                                 volumeValue = calcWallsVolume()
                                 calculateCost()
@@ -156,7 +154,7 @@ object ComposeApp {
 
                         val foundationHeightField = CustomTextField(
                             label = "Высота фундамента (м)",
-                            onTextChange = {
+                            onValueChange = {
                                 sizeInputs[5] = it.replace(",", ".").toFloatOrNull()
                                 foundationHeight = sizeInputs[5]
                                 calculateCost()
@@ -305,13 +303,5 @@ object ComposeApp {
                 }
             }
         }
-    }
-
-    private fun BigDecimal.toCoherentNumber(): String {
-        val decimalFormatSymbols = DecimalFormatSymbols().apply {
-            decimalSeparator = ','
-            groupingSeparator = ' '
-        }
-        return DecimalFormat("#,##0.00", decimalFormatSymbols).format(this)
     }
 }
