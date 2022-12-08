@@ -173,8 +173,6 @@ object ComposeApp {
                         }
                     }
 
-                    // Сумма всех значений материалов, выбранных пользователем
-
                     // Контейнер с расчётом стоимости строительства дома по проекту
                     InputContainer(
                         labelText = "Расчёт стоимости строительства дома по проекту ",
@@ -235,11 +233,6 @@ object ComposeApp {
                                 calculateCost()
                             }
                         )
-
-                        houseFoundation.draw()
-                        bearingWalls.draw()
-                        facadeCladding.draw()
-                        roofing.draw()
 
                         listOf(
                             houseFoundation,
