@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import helpers.ProjectColors
 import helpers.Strings.HEADER_TEXT
+import helpers.Strings.HEADER_TEXT_INFO
 import models.*
 import java.math.BigDecimal
 
@@ -35,6 +36,7 @@ object ComposeApp {
                 ) {
                     // Рисуем заголовок
                     Header(value = HEADER_TEXT).draw()
+                    Header(value = HEADER_TEXT_INFO).draw()
 
                     // ============= Общие переменные в контексте всего окна приложения ===================
 
